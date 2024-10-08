@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container border rounded h-75 mb-2 p-5">
+
+    {% for errors in form.errors.values() %}
+        {% for error in errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <div class="row mb-2">
+            {{ form.username(class="form-control", placeholder=form.username.label.text) }}
+        </div>
+
+        <div class="row mb-2">
+            {{ form.password(class="form-control", placeholder=form.password.label.text) }}
+        </div>
+
+        <div class="row mb-2">
+            {{ form.repeat_password(class="form-control") }}
+        </div>
+
+        <div class="row mb-2">
+            {{ form.country(class="form-select") }}
+        </div>
+
+        <div class="row mb-2">
+            {{ form.gender.label }}
+            {{ form.gender }}
+        </div>
+
+        <div class="row mb-2">
+            {{ form.about_me(class="form-control", placeholder=form.about_me.label.text) }}
+        </div>
+        <div class="row mb-2">
+            {{ form.birthday.label }}
+            {{ form.birthday(class="form-control") }}
+        </div>
+
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+</div>
+{% endblock %}

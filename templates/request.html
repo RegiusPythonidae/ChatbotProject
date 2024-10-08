@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container border rounded mb-2 p-5">
+    <div class="row">
+        {% for product in data %}
+        <div class="col">
+            <div class="border rounded-1 shadow m-2">
+                <img src="{{ product['image'] }}" width="128px">
+                <p>{{product['title']}}</p>
+                <h3>{{product['price']}}</h3>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

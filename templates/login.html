@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container border rounded h-75 mb-2 p-5">
+
+    {% for errors in form.errors.values() %}
+        {% for error in errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <div class="row mb-2">
+            {{ form.username(class="form-control", placeholder=form.username.label.text) }}
+        </div>
+
+        <div class="row mb-2">
+            {{ form.password(class="form-control", placeholder=form.password.label.text) }}
+        </div>
+
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+</div>
+{% endblock %}
